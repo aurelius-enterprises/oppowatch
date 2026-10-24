@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opposition deadlines explained | Oppowatch</title>
+<style>:root{--ink:#0F1B2D;--ink-2:#44526A;--ink-3:#5B6880;--paper:#F7F8FA;--card:#FFFFFF;--line:#DDE2EA;--accent:#0E9F8E;--accent-ink:#0A7366;--accent-soft:#E3F4F1;--amber:#E8A317;--amber-ink:#3A2800;--amber-soft:#FDF3DC;--head:#0F1B2D;--head-ink:#F7F8FA;--on-accent:#FFFFFF;--r:12px;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--ink:#E6EBF2;--ink-2:#B4BFCE;--ink-3:#9AA6B8;--paper:#0B1422;--card:#132136;--line:#25344C;--accent:#2BC2AE;--accent-ink:#5BD8C6;--accent-soft:#12302F;--amber:#F0B43A;--amber-ink:#2A1C00;--amber-soft:#3A2D10;--head:#081020;--head-ink:#E6EBF2;--on-accent:#0B1422}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:1.05rem/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;overflow-wrap:anywhere}
+a{color:var(--accent-ink);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:68rem;margin:0 auto;padding:0 24px}
+.num{font-variant-numeric:tabular-nums}
+.top{background:var(--head);color:var(--head-ink)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;min-height:64px;gap:16px}
+.brand{display:inline-flex;align-items:center;gap:8px;font-weight:650;font-size:1.2rem;letter-spacing:-.01em;color:inherit;text-decoration:none}
+.brand svg{flex:none}
+.hero{background:var(--head);color:var(--head-ink);padding:48px 0 64px}
+.hero h1{font-size:clamp(1.9rem,5.5vw,2.4rem);line-height:1.15;font-weight:600;letter-spacing:-.02em;margin:0 0 16px;max-width:30ch}
+.hero h1+.actions{margin-top:32px}
+.actions{display:flex;flex-wrap:wrap;gap:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:999px;font:inherit;font-weight:600;text-decoration:none;border:2px solid transparent}
+.btn-primary{background:var(--accent-ink);color:var(--on-accent)}
+.btn-primary[disabled]{background:#5B6880;color:#F7F8FA;cursor:not-allowed}
+.btn-ghost{border-color:var(--head-ink);color:var(--head-ink)}
+section{padding:56px 0}
+section+section{border-top:1px solid var(--line)}
+h2{font-size:1.6rem;line-height:1.25;font-weight:600;letter-spacing:-.01em;margin:0 0 24px}
+h3{font-size:1.1rem;margin:16px 0 8px;line-height:1.3}
+.lede{color:var(--ink-2);max-width:42rem;margin:-8px 0 32px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(19rem,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.card p{margin:0;color:var(--ink-2)}
+.icon{width:40px;height:40px;border-radius:10px;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center}
+.feature h3{margin-top:0}
+.price{display:flex;flex-direction:column;gap:8px}
+.price .amt{font-size:1.35rem;font-weight:650;color:var(--ink);font-variant-numeric:tabular-nums}
+.price .per{font-size:.92rem;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.price ul{margin:8px 0 0;padding-left:20px;color:var(--ink-2)}
+.small{font-size:.92rem;color:var(--ink-2)}
+.muted{font-size:.88rem;color:var(--ink-3)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.chip{display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink-2);font-size:.9rem;font-variant-numeric:tabular-nums}
+.top .chip{background:transparent;border-color:#3A4A64;color:var(--head-ink)}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:2px 12px;border-radius:999px;background:var(--amber);color:var(--amber-ink);font-weight:600;font-size:.9rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+.deadline{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.matches{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-size:.95rem}
+.matches th{text-align:left;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3);font-weight:600;padding:12px 16px;border-bottom:1px solid var(--line)}
+.matches td{padding:16px;vertical-align:top;border-bottom:1px solid var(--line)}
+.matches tr:last-child td{border-bottom:0}
+.matches .mk{font-weight:650;font-size:1.05rem}
+.matches a{display:inline-flex;align-items:center;min-height:44px}
+.why{margin:0}
+.empty{background:var(--card);border:1px dashed var(--line);border-radius:var(--r);padding:24px;color:var(--ink-2);margin:0}
+details{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin:0 0 8px}
+summary{cursor:pointer;min-height:48px;display:flex;align-items:center;padding:12px 24px;font-weight:600;list-style-position:inside}
+details p{margin:0;padding:0 24px 16px;color:var(--ink-2)}
+.fine{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--r);padding:24px}
+.fine p{margin:0 0 12px;color:var(--ink)}
+.fine p:last-child{margin:0}
+.sample .row{display:grid;gap:8px 24px;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));margin:16px 0}
+.sample dt{font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3)}
+.sample dd{margin:0}
+footer.site{padding:32px 0 48px;color:var(--ink-2);font-size:.92rem}
+footer.site p{margin:0 0 8px}
+@media (max-width:760px){.wrap{padding:0 16px}section{padding:40px 0}.hero{padding:32px 0 48px}.matches,.matches tbody,.matches tr,.matches td{display:block;width:100%}.matches{background:none;border:0}.matches thead,.matches .hd{display:none}.matches tr{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:8px 16px;margin:0 0 16px}.matches td{border:0;padding:8px 0}.matches td[data-label]::before{content:attr(data-label);display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3)}}</style>
+</head><body>
+<header class="top"><div class="wrap"><a class="brand" href="index.html"><svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><circle cx="13" cy="13" r="10" fill="none" stroke="#0E9F8E" stroke-width="3"/><path d="M20.5 20.5 29 29" stroke="#0E9F8E" stroke-width="3.5" stroke-linecap="round"/><text x="13" y="16.5" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="currentColor">TM</text></svg>Oppowatch</a><a href="report-sample.html" style="color:inherit;min-height:44px;display:inline-flex;align-items:center">Sample report</a></div></header>
+<main>
+<section class="hero"><div class="wrap">
+<h1>Trademark opposition deadlines, in plain language.</h1>
+<p class="lede" style="color:inherit;margin:0">What the 30-day window is, how it can be extended, and how to check a record yourself.</p>
+</div></section>
+
+<section><div class="wrap">
+<h2>The 30-day window</h2>
+<div class="grid grid-2">
+<div class="card"><h3>When it opens</h3><p>Before a US application can register, the USPTO publishes the mark in its weekly Official Gazette. The publication date is the start of the opposition period.</p></div>
+<div class="card"><h3>How long it lasts</h3><p>Anyone who believes they would be harmed by the registration has 30 days from the publication date to file an opposition, or a request to extend that time, with the Trademark Trial and Appeal Board (TTAB).</p></div>
+<div class="card"><h3>Weekends and holidays</h3><p>If the last day falls on a Saturday, Sunday or federal holiday in Washington, DC, the filing can be made on the next business day.</p></div>
+<div class="card"><h3>What Oppowatch shows</h3><p>For each published match, the date the initial 30-day window closes and a reminder date 10 days before it. It does not track extensions; check the record for those.</p></div>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<h2>Extensions</h2>
+<p class="lede">A potential opposer can ask the TTAB for more time, but only by filing before the current period runs out. In outline:</p>
+<div class="grid">
+<div class="card"><h3>First request</h3><p>Either 30 more days without giving a reason, or 90 more days for good cause.</p></div>
+<div class="card"><h3>Second request</h3><p>After a first 30-day extension, a further 60 days for good cause.</p></div>
+<div class="card"><h3>Final request</h3><p>A last 60 days, only with the applicant&rsquo;s consent or in extraordinary circumstances.</p></div>
+</div>
+<p class="small" style="margin-top:24px">In total the period cannot run past 180 days from the publication date. A first 30-day request has no USPTO fee; the 90-day, second and final requests do. Rules and fees change; the USPTO TTAB page is the authority.</p>
+</div></section>
+
+<section><div class="wrap">
+<h2>How to check a record in TSDR</h2>
+<div class="grid">
+<div class="card"><h3>1. Open TSDR</h3><p>Go to TSDR (Trademark Status and Document Retrieval) at tsdr.uspto.gov. Every row in an Oppowatch report links straight to it.</p></div>
+<div class="card"><h3>2. Search the serial number</h3><p>Choose &ldquo;US Serial No.&rdquo; and enter the 8-digit serial number from the report.</p></div>
+<div class="card"><h3>3. Read the status</h3><p>The Status tab shows the current status and the publication date. Any extension request or opposition appears in the prosecution history and in the TTAB proceedings for that serial number.</p></div>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<h2>The fine print</h2>
+<div class="fine">
+<p class="boundary">This report lists public USPTO records that look similar to your watched mark, with the dates those records carry. It is information, not legal advice. An application is not an infringement; talk to a trademark attorney before acting. The opposition deadline shown is the initial 30-day window from the publication date; extensions are possible (see the USPTO TTAB page). Check each record yourself via its TSDR link. Source: USPTO. This service is not affiliated with or endorsed by the USPTO.</p>
+<p>Data: United States Patent and Trademark Office (www.uspto.gov), public-domain US government data. Not affiliated with or endorsed by the USPTO.</p>
+</div>
+</div></section>
+</main>
+<footer class="site"><div class="wrap"><p><strong>Oppowatch</strong></p><p><a href="opposition-deadlines.html">Opposition deadlines explained</a> &middot; <a href="report-sample.html">Sample report</a></p><p class="muted">Source: 37 CFR 2.102 (retrieved 2026-10-23).</p></div></footer>
+</body></html>

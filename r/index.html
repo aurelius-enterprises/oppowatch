@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Oppowatch: your report</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:56rem;margin:1rem auto;padding:0 1rem;color:#222}
+iframe{width:100%;min-height:80vh;border:1px solid #ccc}
+#msg{color:#555}
+</style>
+</head>
+<body>
+<h1>Oppowatch: your report</h1>
+<p id="msg">Opening your report&hellip;</p>
+<iframe id="out" sandbox="" title="Your watch report" hidden></iframe>
+<script>
+"use strict";
+const MAGIC = "OPW1", SALT_LEN = 16, IV_LEN = 12;
+
+async function decryptBlob(buf, passphrase) {
+  const b = new Uint8Array(buf);
+  if (new TextDecoder().decode(b.slice(0, 4)) !== MAGIC) throw new Error("bad file");
+  const iterations = new DataView(buf).getUint32(4, false);
+  const salt = b.slice(8, 8 + SALT_LEN);
+  const iv = b.slice(8 + SALT_LEN, 8 + SALT_LEN + IV_LEN);
+  const ct = b.slice(8 + SALT_LEN + IV_LEN);
+  const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(passphrase), "PBKDF2", false, ["deriveKey"]);
+  const key = await crypto.subtle.deriveKey({name: "PBKDF2", hash: "SHA-256", salt, iterations},
+    base, {name: "AES-GCM", length: 256}, false, ["decrypt"]);
+  const pt = await crypto.subtle.decrypt({name: "AES-GCM", iv, additionalData: b.slice(0, 4), tagLength: 128}, key, ct);
+  return new TextDecoder().decode(pt);
+}
+
+async function fileId(s) {
+  const h = new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)));
+  return Array.from(h, (x) => x.toString(16).padStart(2, "0")).join("").slice(0, 16);
+}
+
+(async () => {
+  const msg = document.getElementById("msg");
+  const s = new URLSearchParams(location.search).get("s");
+  if (!s) { msg.textContent = "This page needs the link from your payment confirmation."; return; }
+  try {
+    const res = await fetch((await fileId(s)) + ".enc", {cache: "no-store"});
+    if (res.status === 404) { msg.textContent = "Your first report is not ready yet. It appears after the next daily run."; return; }
+    if (!res.ok) throw new Error("fetch");
+    const out = document.getElementById("out");
+    out.srcdoc = await decryptBlob(await res.arrayBuffer(), s);
+    out.hidden = false;
+    msg.textContent = "Bookmark this page to see each day's report.";
+  } catch (x) {
+    msg.textContent = "Could not open the report. Check that you used the full link from your payment confirmation.";
+  }
+})();
+</script>
+</body>
+</html>

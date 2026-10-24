@@ -1,15 +1,83 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Watch report: KLARITY</title>
-<style>body{font-family:system-ui,sans-serif;max-width:52rem;margin:2rem auto;padding:0 1rem;color:#222}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{border:1px solid #ccc;padding:.3rem .5rem;text-align:left;vertical-align:top}th{background:#f4f4f4}.note{color:#555}footer{margin-top:2rem;border-top:1px solid #ccc;padding-top:1rem;font-size:.85rem}</style>
+<style>:root{--ink:#0F1B2D;--ink-2:#44526A;--ink-3:#5B6880;--paper:#F7F8FA;--card:#FFFFFF;--line:#DDE2EA;--accent:#0E9F8E;--accent-ink:#0A7366;--accent-soft:#E3F4F1;--amber:#E8A317;--amber-ink:#3A2800;--amber-soft:#FDF3DC;--head:#0F1B2D;--head-ink:#F7F8FA;--on-accent:#FFFFFF;--r:12px;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--ink:#E6EBF2;--ink-2:#B4BFCE;--ink-3:#9AA6B8;--paper:#0B1422;--card:#132136;--line:#25344C;--accent:#2BC2AE;--accent-ink:#5BD8C6;--accent-soft:#12302F;--amber:#F0B43A;--amber-ink:#2A1C00;--amber-soft:#3A2D10;--head:#081020;--head-ink:#E6EBF2;--on-accent:#0B1422}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:1.05rem/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;overflow-wrap:anywhere}
+a{color:var(--accent-ink);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:68rem;margin:0 auto;padding:0 24px}
+.num{font-variant-numeric:tabular-nums}
+.top{background:var(--head);color:var(--head-ink)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;min-height:64px;gap:16px}
+.brand{display:inline-flex;align-items:center;gap:8px;font-weight:650;font-size:1.2rem;letter-spacing:-.01em;color:inherit;text-decoration:none}
+.brand svg{flex:none}
+.hero{background:var(--head);color:var(--head-ink);padding:48px 0 64px}
+.hero h1{font-size:clamp(1.9rem,5.5vw,2.4rem);line-height:1.15;font-weight:600;letter-spacing:-.02em;margin:0 0 16px;max-width:30ch}
+.hero h1+.actions{margin-top:32px}
+.actions{display:flex;flex-wrap:wrap;gap:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:999px;font:inherit;font-weight:600;text-decoration:none;border:2px solid transparent}
+.btn-primary{background:var(--accent-ink);color:var(--on-accent)}
+.btn-primary[disabled]{background:#5B6880;color:#F7F8FA;cursor:not-allowed}
+.btn-ghost{border-color:var(--head-ink);color:var(--head-ink)}
+section{padding:56px 0}
+section+section{border-top:1px solid var(--line)}
+h2{font-size:1.6rem;line-height:1.25;font-weight:600;letter-spacing:-.01em;margin:0 0 24px}
+h3{font-size:1.1rem;margin:16px 0 8px;line-height:1.3}
+.lede{color:var(--ink-2);max-width:42rem;margin:-8px 0 32px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(19rem,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.card p{margin:0;color:var(--ink-2)}
+.icon{width:40px;height:40px;border-radius:10px;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center}
+.feature h3{margin-top:0}
+.price{display:flex;flex-direction:column;gap:8px}
+.price .amt{font-size:1.35rem;font-weight:650;color:var(--ink);font-variant-numeric:tabular-nums}
+.price .per{font-size:.92rem;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.price ul{margin:8px 0 0;padding-left:20px;color:var(--ink-2)}
+.small{font-size:.92rem;color:var(--ink-2)}
+.muted{font-size:.88rem;color:var(--ink-3)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.chip{display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink-2);font-size:.9rem;font-variant-numeric:tabular-nums}
+.top .chip{background:transparent;border-color:#3A4A64;color:var(--head-ink)}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:2px 12px;border-radius:999px;background:var(--amber);color:var(--amber-ink);font-weight:600;font-size:.9rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+.deadline{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.matches{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-size:.95rem}
+.matches th{text-align:left;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3);font-weight:600;padding:12px 16px;border-bottom:1px solid var(--line)}
+.matches td{padding:16px;vertical-align:top;border-bottom:1px solid var(--line)}
+.matches tr:last-child td{border-bottom:0}
+.matches .mk{font-weight:650;font-size:1.05rem}
+.matches a{display:inline-flex;align-items:center;min-height:44px}
+.why{margin:0}
+.empty{background:var(--card);border:1px dashed var(--line);border-radius:var(--r);padding:24px;color:var(--ink-2);margin:0}
+details{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin:0 0 8px}
+summary{cursor:pointer;min-height:48px;display:flex;align-items:center;padding:12px 24px;font-weight:600;list-style-position:inside}
+details p{margin:0;padding:0 24px 16px;color:var(--ink-2)}
+.fine{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--r);padding:24px}
+.fine p{margin:0 0 12px;color:var(--ink)}
+.fine p:last-child{margin:0}
+.sample .row{display:grid;gap:8px 24px;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));margin:16px 0}
+.sample dt{font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3)}
+.sample dd{margin:0}
+footer.site{padding:32px 0 48px;color:var(--ink-2);font-size:.92rem}
+footer.site p{margin:0 0 8px}
+@media (max-width:760px){.wrap{padding:0 16px}section{padding:40px 0}.hero{padding:32px 0 48px}.matches,.matches tbody,.matches tr,.matches td{display:block;width:100%}.matches{background:none;border:0}.matches thead,.matches .hd{display:none}.matches tr{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:8px 16px;margin:0 0 16px}.matches td{border:0;padding:8px 0}.matches td[data-label]::before{content:attr(data-label);display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3)}}</style>
 </head><body>
+<header class="top"><div class="wrap"><span class="brand"><svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><circle cx="13" cy="13" r="10" fill="none" stroke="#0E9F8E" stroke-width="3"/><path d="M20.5 20.5 29 29" stroke="#0E9F8E" stroke-width="3.5" stroke-linecap="round"/><text x="13" y="16.5" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="currentColor">TM</text></svg>Oppowatch</span></div></header>
+<main><section class="hero"><div class="wrap">
 <h1>Watch report: KLARITY</h1>
-<p>Classes watched: 003. Generated 2026-10-22. Data: USPTO daily files 2026-10-20, 2026-10-21.</p>
+<ul class="chips"><li class="chip">Mark: KLARITY</li><li class="chip">Classes 003</li><li class="chip">Generated 2026-10-22</li></ul>
+<p class="small" style="margin:16px 0 0;color:inherit;opacity:.85">Classes watched: 003. Generated 2026-10-22. Data: USPTO daily files 2026-10-20, 2026-10-21.</p>
+</div></section><section><div class="wrap">
 <h2>Published for opposition</h2>
-<table><tr><th>Mark</th><th>Serial</th><th>Applicant</th><th>Classes</th><th>Goods/services</th><th>Published</th><th>Window closes</th><th>Why it looks close</th></tr>
-<tr><td>CLARITY</td><td><a href="https://tsdr.uspto.gov/#caseNumber=50008897&amp;caseType=SERIAL_NO&amp;searchType=statusSearch">TSDR 50008897</a></td><td>Shadowheart LLC</td><td>003</td><td>Nail gel</td><td>2026-10-20</td><td>2026-11-19<br><span class="note">10 days before: 2026-11-09</span></td><td>word-by-word spelling similarity 0.86 (string 0.86, token_overlap 0.00, containment 0.00, per_token 0.86)</td></tr>
-</table>
-<h2>New filings</h2>
-<p>The watch ran on 2026-10-20, 2026-10-21 and found no new filings at or above the threshold.</p>
-<footer><p>This report lists public USPTO records that look similar to your watched mark, with the dates those records carry. It is information, not legal advice. An application is not an infringement; talk to a trademark attorney before acting. The opposition deadline shown is the initial 30-day window from the publication date; extensions are possible (see the USPTO TTAB page). Check each record yourself via its TSDR link. This service is not affiliated with or endorsed by the USPTO.</p><p>Source: USPTO.</p></footer>
+<table class="matches"><thead><tr class="hd"><th>Mark</th><th>Serial</th><th>Applicant</th><th>Goods/services</th><th>Published</th><th>Window closes</th><th>Why it looks close</th></tr></thead><tbody>
+<tr><td data-label="Mark"><span class="mk">CLARITY</span></td><td data-label="Serial" class="num"><a href="https://tsdr.uspto.gov/#caseNumber=50008897&amp;caseType=SERIAL_NO&amp;searchType=statusSearch">TSDR 50008897</a></td><td data-label="Applicant">Shadowheart LLC</td><td data-label="Goods/services"><span class="chip">Class 003</span> Nail gel</td><td data-label="Published" class="num">2026-10-20</td><td data-label="Window closes"><div class="deadline num"><span class="pill">2026-11-19 &middot; 28 days left</span><span class="muted">10 days before: 2026-11-09</span></div></td><td data-label="Why it looks close"><p class="why">“CLARITY” is spelled almost like “KLARITY”, word by word.</p><p class="why muted num">word-by-word spelling similarity 0.86 (string 0.86, token_overlap 0.00, containment 0.00, per_token 0.86)</p></td></tr>
+</tbody></table>
+</div></section><section><div class="wrap"><h2>New filings</h2>
+<p class="empty">The watch ran on 2026-10-20, 2026-10-21 and found no new filings at or above the threshold.</p>
+</div></section></main>
+<footer class="site"><div class="wrap"><div class="fine"><p>This report lists public USPTO records that look similar to your watched mark, with the dates those records carry. It is information, not legal advice. An application is not an infringement; talk to a trademark attorney before acting. The opposition deadline shown is the initial 30-day window from the publication date; extensions are possible (see the USPTO TTAB page). Check each record yourself via its TSDR link. This service is not affiliated with or endorsed by the USPTO.</p><p>Data: United States Patent and Trademark Office (www.uspto.gov), public-domain US government data. Not affiliated with or endorsed by the USPTO.</p></div></div></footer>
 </body></html>
